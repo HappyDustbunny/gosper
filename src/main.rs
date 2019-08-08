@@ -28,8 +28,8 @@ fn view(_app: &App, _model: &Model, frame: &Frame) {
 
     draw.background().color(BLACK);
 
-    let origo = Vector2::new(0.0, 0.0);
-    let dir = Vector2::new(5.0, 5.0);
+    let origo = Vector2::new(-300.0, -30.0);
+    let dir = Vector2::new(8.0, 8.0);
     let mut a = (origo, dir);
 
     gosper1(&draw, 4, 150.0, &mut a);
@@ -49,9 +49,9 @@ fn view(_app: &App, _model: &Model, frame: &Frame) {
         else {
             a.1 = rot_vec(a.1, V1);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V60);
+            a.1 = rot_vec(a.1, -V60);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V120);
+            a.1 = rot_vec(a.1, -V120);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
             a.1 = rot_vec(a.1, V60);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
@@ -60,7 +60,7 @@ fn view(_app: &App, _model: &Model, frame: &Frame) {
             gosper1(draw, n-1, len/7.0.sqrt(), a);
             a.1 = rot_vec(a.1, V60);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V2);
+            a.1 = rot_vec(a.1, -V2);
         }
         *a
     }
@@ -80,18 +80,18 @@ fn view(_app: &App, _model: &Model, frame: &Frame) {
         else {
             a.1 = rot_vec(a.1, V2);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V60);
+            a.1 = rot_vec(a.1, -V60);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V120);
+            a.1 = rot_vec(a.1, -V120);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V60);
+            a.1 = rot_vec(a.1, -V60);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
             a.1 = rot_vec(a.1, V120);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
             a.1 = rot_vec(a.1, V60);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V1);
+            a.1 = rot_vec(a.1, -V1);
         }
         *a
     }
