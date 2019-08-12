@@ -36,42 +36,42 @@ fn view(_app: &App, _model: &Model, frame: &Frame) {
 
     pub fn gosper1(draw: &app::Draw, n: usize, len: f32, a: &mut(Vector2, Vector2)) -> (Vector2, Vector2) {
         // n is recursion depht, len is step length, a is (coordinate, direction)
-        let U: f32 = (1.0/(3.0*3.0.sqrt())).atan();
-        let V1: f32 = f32::consts::PI/6.0 - U;
-        let V2: f32 = f32::consts::PI/2.0 - U;
-        let V60 = f32::consts::PI/3.0;
-        let V120 = f32::consts::PI - V60;
+        let u: f32 = (1.0/(3.0*3.0.sqrt())).atan();
+        let v1: f32 = f32::consts::PI/6.0 - u;
+        let V2: f32 = f32::consts::PI/2.0 - u;
+        let v60 = f32::consts::PI/3.0;
+        let v120 = f32::consts::PI - v60;
 
         if n == 0 {
             draw.line().start(a.0).end(a.0 + a.1).color(WHITE);
             a.0 += a.1;
         }
         else {
-            a.1 = rot_vec(a.1, V1);
+            a.1 = rot_vec(a.1, v1);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, -V60);
+            a.1 = rot_vec(a.1, -v60);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, -V120);
+            a.1 = rot_vec(a.1, -v120);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V60);
+            a.1 = rot_vec(a.1, v60);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V120);
+            a.1 = rot_vec(a.1, v120);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V60);
+            a.1 = rot_vec(a.1, v60);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, -V2);
+            a.1 = rot_vec(a.1, -v2);
         }
         *a
     }
 
     pub fn gosper2(draw: &app::Draw, n: usize, len: f32, a: &mut(Vector2, Vector2)) -> (Vector2, Vector2) {
         // n is recursion depht, len is step length, a is (coordinate, direction)
-        let U: f32 = (1.0/(3.0*3.0.sqrt())).atan();
-        let V1: f32 = f32::consts::PI/6.0 - U;
-        let V2: f32 = f32::consts::PI/2.0 - U;
-        let V60 = f32::consts::PI/3.0;
-        let V120 = f32::consts::PI - V60;
+        let u: f32 = (1.0/(3.0*3.0.sqrt())).atan();
+        let v1: f32 = f32::consts::PI/6.0 - u;
+        let V2: f32 = f32::consts::PI/2.0 - u;
+        let v60 = f32::consts::PI/3.0;
+        let v120 = f32::consts::PI - v60;
 
         if n == 0 {
             draw.line().start(a.0).end(a.0 + a.1).color(WHITE);
@@ -80,18 +80,18 @@ fn view(_app: &App, _model: &Model, frame: &Frame) {
         else {
             a.1 = rot_vec(a.1, V2);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, -V60);
+            a.1 = rot_vec(a.1, -v60);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, -V120);
+            a.1 = rot_vec(a.1, -v120);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, -V60);
+            a.1 = rot_vec(a.1, -v60);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V120);
+            a.1 = rot_vec(a.1, v120);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, V60);
+            a.1 = rot_vec(a.1, v60);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
-            a.1 = rot_vec(a.1, -V1);
+            a.1 = rot_vec(a.1, -v1);
         }
         *a
     }
