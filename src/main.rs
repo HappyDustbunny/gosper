@@ -38,7 +38,7 @@ fn view(_app: &App, _model: &Model, frame: &Frame) {
         // n is recursion depht, len is step length, a is (coordinate, direction)
         let u: f32 = (1.0/(3.0*3.0.sqrt())).atan();
         let v1: f32 = f32::consts::PI/6.0 - u;
-        let V2: f32 = f32::consts::PI/2.0 - u;
+        let v2: f32 = f32::consts::PI/2.0 - u;
         let v60 = f32::consts::PI/3.0;
         let v120 = f32::consts::PI - v60;
 
@@ -69,7 +69,7 @@ fn view(_app: &App, _model: &Model, frame: &Frame) {
         // n is recursion depht, len is step length, a is (coordinate, direction)
         let u: f32 = (1.0/(3.0*3.0.sqrt())).atan();
         let v1: f32 = f32::consts::PI/6.0 - u;
-        let V2: f32 = f32::consts::PI/2.0 - u;
+        let v2: f32 = f32::consts::PI/2.0 - u;
         let v60 = f32::consts::PI/3.0;
         let v120 = f32::consts::PI - v60;
 
@@ -78,7 +78,7 @@ fn view(_app: &App, _model: &Model, frame: &Frame) {
             a.0 += a.1;
         }
         else {
-            a.1 = rot_vec(a.1, V2);
+            a.1 = rot_vec(a.1, v2);
             gosper1(draw, n-1, len/7.0.sqrt(), a);
             a.1 = rot_vec(a.1, -v60);
             gosper2(draw, n-1, len/7.0.sqrt(), a);
